@@ -20,7 +20,7 @@ RT = 9.97;
 V_in = 12;                
 
 % Time at which J average calculation starts in seconds,
-% calculate by looking at trasient part of the angular Velocity
+% calculate by looking at steady-state part of the angular Velocity
 Start_Time = 0;          
 
 % Time at which J average calculation ends in seconds

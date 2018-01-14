@@ -1,6 +1,7 @@
 % [data_vector_dot, time_vector_dot] = differ(data_vector, time_vector, freq)
 % anything in milli, should mutiply by 10^-3
 s = tf('s');
+
 Kt = 39.3 * 10^(-3); % 39.3 mNm/A
 Ke = 1/243; % 243 rpm/V
 Jr = 28;

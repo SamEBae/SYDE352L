@@ -60,6 +60,7 @@ data_vector = Y;
 [data_vector_dot, time_vector_dot] = differ(data_vector, time_vector, my_freq)
 [data_vector_dot_dot, time_vector_dot_dot] = differ(data_vector_dot, time_vector, my_freq)
 
+% figure 2-14 
 figure;
 plot(time_vector_dot, data_vector_dot)
 grid on
@@ -67,6 +68,7 @@ title('Output vs. Time');
 ylabel('Angular Velocity (radians)');
 xlabel('Time (seconds)');
 
+% figure 2-15
 figure;
 plot(time_vector_dot_dot, data_vector_dot_dot)
 grid on
