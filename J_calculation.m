@@ -19,8 +19,12 @@ RT = 9.97;
 % Voltage input in Volts
 V_in = 12;                
 
-Start_Time = 0;          % Time at which J average calculation starts in seconds
-End_Time = 0;            % Time at which J average calculation ends in seconds
+% Time at which J average calculation starts in seconds,
+% calculate by looking at trasient part of the angular Velocity
+Start_Time = 0;          
+
+% Time at which J average calculation ends in seconds
+End_Time = 0;            
 Freq = Freq;             % Data capture frequency
 
 % Because you might have used different vector names, add yours now.
