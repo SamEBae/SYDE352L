@@ -159,7 +159,7 @@ static float N = 0;
 float Reference_Input = 0;          
 
 // Declare Input Filter Function I(s) (assumed to be a gain)
-float I_Gain = 0;
+float I_Gain = 651.8784;
 
 // Declare Voltage Input (volts)
 float V_in = 0;

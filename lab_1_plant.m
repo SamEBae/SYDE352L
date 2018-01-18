@@ -3,7 +3,7 @@
 s = tf('s');
 
 Kt = 39.3 * 10^(-3); % 39.3 mNm/A
-Ke = 1/243; % 243 rpm/V
+Ke = 1/25.446900494; % 243 rpm/V = 25.446900494 rads/s
 Jr = 28;
 % !!!!
 Jc = -1;    % needs to be computed empirically

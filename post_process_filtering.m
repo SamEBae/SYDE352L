@@ -7,6 +7,14 @@ vector_in = Ydot;
 
 [v_f1, v_f2, v_f3] = data_filter(f1_n, f2_n, f3_n, vector_in);
 
+% Figure 2-17
+% filter the vector_in
+% pick the closest filter 1 or filter 2, CHRIS SAID 2 because who knows
+% diffrentiate filter 1 or 2 to get acceleration
+% test different frequencies
+% then put back into filter: [a_f1, a_f2, a_f3] = data_filter(f1_n, f2_n, f3_n, v_f2);
+
+
 [vector_in_dot, time_vector] = differ(vector_in, time_vector, my_freq)
 [v_f1_dot, time_vector] = differ(v_f1, time_vector, my_freq)
 [v_f2_dot, time_vector] = differ(v_f1, time_vector, my_freq)

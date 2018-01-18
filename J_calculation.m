@@ -1,30 +1,35 @@
 % This script calculates the average inertia (J) in kg*m^2 from Start_Time  
 % in seconds to End_Time in seconds.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% wont look like Figure 2-16, 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WRONGGGG
 % User defined specifications. Add yours now.
 % Torque constant in N*m/A
 Kt = 39.3 * 10^(-3);
 
 % Back EMF coefficient in V*s/rad
-Ke = 1/243;
+Ke = 1/25.446900494; % 243 rpm/V = 25.446900494 rads/s
 
 % Viscous friction coefficient in N*m*s/rad    
 b = 1.38 * 10^(-6); % 1.38 x 10 ^(-6) Nms /rad
 
 % Total resistance in Ohms
+% TODO: check reistance with multimeter
 RT = 9.97;
+% WRONG!!, TOO DAMN HIGH
+% Simran:  ~3 to ~4
 
 % Voltage input in Volts
 V_in = 12;                
 
 % Time at which J average calculation starts in seconds,
 % calculate by looking at steady-state part of the angular Velocity
-Start_Time = 0;          
+Start_Time = 3.5;          
 
 % Time at which J average calculation ends in seconds
-End_Time = 0;            
+End_Time = 5;            
 Freq = Freq;             % Data capture frequency
 
 % Because you might have used different vector names, add yours now.
