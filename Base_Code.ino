@@ -132,16 +132,17 @@ volatile float VtoPWM = 0;                    // Conversion factor from Volts to
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
 // Declare Mode of Operation
-static byte Mode = 0;
+static byte Mode = 1;
 
 // Declare Step Input PWM output (0-1023)
 static float Step_Input = 0;
+// Step_Input = pow(500, 10)
 
 // Declare Start Ramp PWM output (0-1023) 
 static float Ramp_Start = 0;
 
 // Declare Final Ramp PWM output (0-1023) 
-static float Ramp_Final = 0;
+static float Ramp_Final = 1023;
 
 // Declare Final Frequency of Chirp
 static float Freq_Final = 0;
@@ -162,13 +163,13 @@ float Reference_Input = 0;
 float I_Gain = 651.8784;
 
 // Declare Voltage Input (volts)
-float V_in = 0;
+float V_in = 12;
 
 // Declare Capture/Control Loop Period in milli seconds (2-1000)
-static unsigned int Period = 0;
+static unsigned int Period = 10;
 
 // Declare Test Duration in seconds
-static float Time = 0;
+static float Time = 5;
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
