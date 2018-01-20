@@ -1,3 +1,4 @@
+%{
 % This script collects the data sent from the Arduino Mega.  It collects 
 % the Loop Frequency (Freq) in Hz, the Duration of the Test (Time) 
 % in seconds, the Reference Input vector (R) in units dependent on the type
@@ -30,11 +31,15 @@ fclose(arduino);
 
 disp('Data capture complete.')
 
+
+
 % Convert Y from encoder counts to radians where I_Gain is the Input Filter 
 % gain in encoder counts per radian
 Y = Y/I_Gain;
 
+%}
 % Plot captured data
+%{
 figure;
 plot(T,R)
 grid on
@@ -53,25 +58,17 @@ disp('Plotting complete.')
 
 
 % custom code starts here
+
 my_freq = Freq;
 time_vector = T;
 data_vector = Y;
 
 [data_vector_dot, time_vector_dot] = differ(data_vector, time_vector, my_freq)
 [data_vector_dot_dot, time_vector_dot_dot] = differ(data_vector_dot, time_vector, my_freq)
-
-% figure 2-14 
+%}
 figure;
-plot(time_vector_dot, data_vector_dot)
+plot(time_vector_dot,data_vector_dot)
 grid on
 title('Output vs. Time');
-ylabel('Angular Velocity (radians)');
-xlabel('Time (seconds)');
-
-% figure 2-15
-figure;
-plot(time_vector_dot_dot, data_vector_dot_dot)
-grid on
-title('Output vs. Time');
-ylabel('Angular Acceleration (radians)');
+ylabel('Angular velocity (radians)');
 xlabel('Time (seconds)');
