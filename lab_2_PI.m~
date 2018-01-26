@@ -1,0 +1,12 @@
+% part A: --------------
+% does not change from the P calculation
+t_r_PI = 1; % TODO change me
+t_s_PI = 1; % TODO change me
+a_PI   = 1;
+b_PI       
+Kp_PI = (2*a_PI - d_0)/(Hs*K);
+Ki_PI  = (a_PI^2-b_PI^2)/(Hs*K);
+Cs_PI = Kp_PI + K_I/s;
+
+a_desired_PI = 1; %TODO change me
+b_desired_PI = 1; %TODO change me

@@ -1,0 +1,25 @@
+% does not change from the P calculation
+zetta = 2.55555556*(tr/ts);
+
+Ps_PD = K/(s^2 + d_1*s+ d_0);
+pole_Ps_PD = pole(Ps_PD);
+
+d_1 = 0.365;
+d_0 = 0;
+
+H1 = H_s;
+
+% case 1: 0 <= zetta <= 1l
+a = real(pole_Ps_PD);
+b = imag(pole_Ps_PD);
+
+% case 2: zetta > 1
+
+% pole = -a +- b
+
+K_d = (2*a-d_1)/(H1*K);
+K_p = (a^2+b^2-d_0)/(H1*K);
+
+C_s 
+% calculate desired poles
+

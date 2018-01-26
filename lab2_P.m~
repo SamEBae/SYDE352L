@@ -1,0 +1,39 @@
+% plant function from previous lab:
+Ps = 13.65/((s+0.361)*s);
+I_s = 651.8784;
+H_s = 651.8784;
+K = 13.65;
+
+K_p1    = 0.001;
+sigma_1 = 0.361;
+sigma_2 = 0;
+
+
+% part A: modelling
+t_r_P = 1; % TODO
+t_s_P = 1; % TODO
+
+zetta = 2.55555556*(t_r_P/t_s_P);
+
+% run after lab_2_calcs
+w_n_P = 1.8/t_r_P;
+
+K_p = (w_n_P)^2-sigma_1*sigma_2/(K*H_s);
+
+% part B: desired poles
+zetta_fixed = 0.7;
+
+
+
+w_n_P_fixed_zetta = (sigma_1+sigma_2)/(2*zetta_fixed);
+K_p_fixed_zetta = ((w_n_P)^2-sigma_1*sigma_2)/(K*H_s);
+
+Tcl_P_desired = 
+
+% this K_p meets 5% overshoot but not target rise
+% plug into simulink to test
+desired_root_1_P = -zetta_fixed*w_n_P + j*w_n_P*(1-zetta_fixed^2)^0.5;
+desired_root_2_P = -zetta_fixed*w_n_P + j*w_n_P*(1-zetta_fixed^2)^0.5;
+
+% probably will see that desired_roots are not even close to sigma_1 and
+% sigma_2 , our real roots. So reject P controller as a possibility
