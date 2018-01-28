@@ -132,7 +132,7 @@ volatile float VtoPWM = 0;                    // Conversion factor from Volts to
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
 // Declare Mode of Operation
-static byte Mode = 0;
+static byte Mode = 3;
 
 // Declare Step Input PWM output (0-1023)
 static float Step_Input = 1000;
@@ -151,10 +151,10 @@ static float Freq_Final = 0;
 static float PWM_Amp = 0;
 
 // Declare PID Gains 
-static float Kp = 0;                     
+static float Kp = 0.07023939708;                     
 static float Ki = 0;                
-static float Kd = 0;                
-static float N = 0;                 
+static float Kd = 0.003837206358;                
+static float N = 1000; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
 
 // Declare Desired Input Value (radians)
 float Reference_Input = 0;          

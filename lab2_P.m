@@ -26,7 +26,8 @@ K_p_P = ((w_n_P)^2-sigma_1*sigma_2)/(K*H_s);
 
 % [Fig 3-10]
 
-% part B: desired poles
+% part B: desired poles for 
+% ------------------ 5% overshoot
 zetta_fixed = 0.7;
 
 w_n_P_fixed_zetta = (sigma_1+sigma_2)/(2*zetta_fixed);
@@ -42,3 +43,5 @@ desired_root_2_P = -zetta_fixed*w_n_P + j*w_n_P*(1-zetta_fixed^2)^0.5;
 
 % probably will see that desired_roots are not even close to sigma_1 and
 % sigma_2 , our real roots. So reject P controller as a possibility
+
+% ------------------ 0.2 ts
