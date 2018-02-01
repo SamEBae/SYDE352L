@@ -1,4 +1,4 @@
-F///////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////
 //  Base Code v4
 //  September, 2017
 //  By Chris McClellan
@@ -151,13 +151,13 @@ static float Freq_Final = 0;
 static float PWM_Amp = 0;
 
 // Declare PID Gains 
-static float Kp = 0.07023939708;                     
+static float Kp = 0.06339105587;                     
 static float Ki = 0;                
-static float Kd = 0.003837206358;                
+static float Kd = 0.003643317527;                
 static float N = 1000; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
 
 // Declare Desired Input Value (radians)
-float Reference_Input = 0;          
+float Reference_Input = 1;          
 
 // Declare Input Filter Function I(s) (assumed to be a gain)
 float I_Gain = 651.8784;
@@ -166,7 +166,7 @@ float I_Gain = 651.8784;
 float V_in = 12;
 
 // Declare Capture/Control Loop Period in milli seconds (2-1000)
-static unsigned int Period = 10;
+static unsigned int Period = 11;
 
 // Declare Test Duration in seconds
 static float Time = 20;

@@ -8,7 +8,7 @@ K_p1    = 0.001;
 sigma_1 = 0.361;
 sigma_2 = 0;
 
-zetta =2.55555556*(tr/ts);
+zetta=2.55555556*(tr/ts);
 
 Transfer_s = (I_s*K_p1*Ps)/ (1+K_p1*Ps*H_s);
 % Transfer_s

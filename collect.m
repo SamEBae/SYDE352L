@@ -1,4 +1,4 @@
-%{
+
 % This script collects the data sent from the Arduino Mega.  It collects 
 % the Loop Frequency (Freq) in Hz, the Duration of the Test (Time) 
 % in seconds, the Reference Input vector (R) in units dependent on the type
@@ -37,15 +37,13 @@ disp('Data capture complete.')
 % gain in encoder counts per radian
 Y = Y/I_Gain;
 
-%}
 % Plot captured data
-%{
-figure;
-plot(T,R)
-grid on
-title('Reference Input vs. Time');
-ylabel('Reference Input');
-xlabel('Time (seconds)');
+%figure;
+%plot(T,R)
+%grid on
+%title('Reference Input vs. Time');
+%ylabel('Reference Input');
+%xlabel('Time (seconds)');
 
 figure;
 plot(T,Y)
@@ -53,10 +51,9 @@ grid on
 title('Output vs. Time');
 ylabel('Angular Position (radians)');
 xlabel('Time (seconds)');
-
 disp('Plotting complete.')
 
-
+%{
 % custom code starts here
 
 my_freq = Freq;
@@ -65,10 +62,11 @@ data_vector = Y;
 
 [data_vector_dot, time_vector_dot] = differ(data_vector, time_vector, my_freq)
 [data_vector_dot_dot, time_vector_dot_dot] = differ(data_vector_dot, time_vector, my_freq)
-%}
+
 figure;
 plot(time_vector_dot,data_vector_dot)
 grid on
 title('Output vs. Time');
 ylabel('Angular velocity (radians)');
 xlabel('Time (seconds)');
+%}

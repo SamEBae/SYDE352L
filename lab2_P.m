@@ -1,3 +1,4 @@
+s = tf('s');
 % plant function from previous lab:
 Ps = 13.65/((s+0.361)*s);
 I_s = 651.8784;
@@ -10,6 +11,7 @@ sigma_2 = 0;
 % part A: modelling
 K_p_trial = 0.001;
 Tcl_P_trial = (I_s*K_p_trial*Ps)/(1+K_p_trial*Ps*H_s); % [eqn 3-1]
+
 
 % do stuff with [Fig 3-4] and [Fig 3-5]
 % this lets us compute
@@ -45,3 +47,5 @@ desired_root_2_P = -zetta_fixed*w_n_P + j*w_n_P*(1-zetta_fixed^2)^0.5;
 % sigma_2 , our real roots. So reject P controller as a possibility
 
 % ------------------ 0.2 ts
+
+Tcl_P_desired = (I_s*0.000001743729942*Ps)/(1+0.000001743729942*Ps*H_s);
