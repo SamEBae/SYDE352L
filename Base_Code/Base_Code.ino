@@ -135,7 +135,7 @@ volatile float VtoPWM = 0;                    // Conversion factor from Volts to
 static byte Mode = 0;
 
 // Declare Step Input PWM output (0-1023)
-static float Step_Input = 175; // TODO: vary me
+static float Step_Input = 177.5; // TODO: vary me
 // Step_Input = pow(500, 10)
 
 // Declare Start Ramp PWM output (0-1023) 
