@@ -132,10 +132,10 @@ volatile float VtoPWM = 0;                    // Conversion factor from Volts to
 ////////////////////////////////////////////////////////////////////////////////////////// 
 
 // Declare Mode of Operation
-static byte Mode = 0;
+static byte Mode = 3;
 
 // Declare Step Input PWM output (0-1023)
-static float Step_Input = 177.5; // TODO: vary me
+static float Step_Input = 0; // TODO: vary me
 // Step_Input = pow(500, 10)
 
 // Declare Start Ramp PWM output (0-1023) 
@@ -151,13 +151,13 @@ static float Freq_Final = 0;
 static float PWM_Amp = 0;
 
 // Declare PID Gains 
-static float Kp = 0.06339105587;                     
-static float Ki = 0;                
-static float Kd = 0.003643317527;                
+static float Kp = 0.06339105587; // TODO                     
+static float Ki = 0;                // TODO
+static float Kd = 0.003643317527;       // TODO         
 static float N = 1000; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
 
 // Declare Desired Input Value (radians)
-float Reference_Input = 1;          
+float Reference_Input = pi/12;           
 
 // Declare Input Filter Function I(s) (assumed to be a gain)
 float I_Gain = 651.8784;
