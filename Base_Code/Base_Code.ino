@@ -152,7 +152,7 @@ static float PWM_Amp = 0;
 
 // Declare PID Gains 
 static float Kp = 0.37034; // TODO                     
-static float Ki = 0.0043;                // TODO
+static float Ki = 0.1;                // TODO
 static float Kd = 0.0157;       // TODO         
 static float N = 200; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
 
