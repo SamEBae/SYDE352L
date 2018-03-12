@@ -53,14 +53,26 @@ Cs_PID3 = 0.37034 + 0.0043/s + 0.0157*s;
 Tcl_PID3 = (I_s*Cs_PID3*Ps)/(1+H_s*Cs_PID3*Ps);
 period_PID3 = 1/(bandwidth(Tcl_PID3)/(2*pi))/10;
 
-rlocus(T_PD1);
-hold on;
-plot(-23, 23.4647, 'kx', 'Markersize', 10);
-plot(-23, -23.4647, 'kx', 'Markersize', 10);
-x = -400:0.01:0
-y1 = (23.4647/-23)*x;
-y2 = (-23.4647/-23)*x;
-plot(x, y1,'k');
-plot(x, y2, 'k');
-hold off;
-period_PD2
+% rlocus(T_PD1);
+% hold on;
+% plot(-23, 23.4647, 'kx', 'Markersize', 10);
+% plot(-23, -23.4647, 'kx', 'Markersize', 10);
+% x = -400:0.01:0
+% y1 = (23.4647/-23)*x;
+% y2 = (-23.4647/-23)*x;
+% plot(x, y1,'k');
+% plot(x, y2, 'k');
+% hold off;
+% period_PD2
+
+Cs_PID_final = 0.37034 + 0.1/s + 0.0157*s;
+Tcl_PID_final = (I_s*Cs_PID_final*Ps)/(1+H_s*Cs_PID_final*Ps);
+
+bandwidth_final_Rads = bandwidth(Tcl_PID_final);
+bandwidth_final_Hz = bandwidth(Tcl_PID_final)/(2*pi);
+bandwidth_final_Hz_rule = bandwidth_final_Hz*10;
+period_PID_final = 1/(bandwidth(Tcl_PID_final)/(2*pi))/10;
+
+% open loop:
+margin(Cs_PID_final*Ps*I_s);
+% bode(Cs_PID_final*Ps*I_s);
