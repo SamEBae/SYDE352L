@@ -296,7 +296,6 @@ void loop()
   // User Defined Local Variables and Global Variable Reset
   /////////////////////////////////////////////////////////////////////////////////////
   
-  
   /////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////  
     
@@ -315,12 +314,21 @@ void loop()
   // User Defined Setup Code
   //////////////////////////////////////////////////////////////////////////////////////
   
+  // Send out initial settings
+  Serial.println(Freq);                 // Send Freq value out serially
+  Serial.println(Time);                 // Send Time value out serially
+  Serial.println(I_Gain);               // Send I_Gain value out serially
   
-
+  
+  // Precalculate Catpture/Control Loop Variables to speed up execuation time
+  Reference_Input_Encoder = int(Reference_Input * I_Gain);     // Convert Reference Input from radians to encoder counts
+  Cnt_Max = Freq * Time;                // Calculate number of interations to be performed
+  Ramp_Slope = (Ramp_Final-Ramp_Start)/(Time*Freq);  // Calculate Ramp Slope [(start value - final value) / number of iterations]  
+  Chirp_Rate = Freq_Final/Time;         // Calculate Chirp Rate (final frequency / time) 
   
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////
-    
+  
   Turn_Off_Emitters(); 
   Stop_Motor();  
     
@@ -351,9 +359,9 @@ void loop()
     //////////////////////////////////////////////////////////////////////////////////////
     // User Defined Loop Code
     //////////////////////////////////////////////////////////////////////////////////////
-
-
-
+    Encoder_Count = Read_Encoder(); 
+    CLStep(Reference_Input_Encoder); //if we do a PID
+    // OLStep(); //if we do anything else
     //////////////////////////////////////////////////////////////////////////////////////   
     //////////////////////////////////////////////////////////////////////////////////////     
         
@@ -376,6 +384,24 @@ void loop()
   Stop_Motor();                  // Stop motor
   MsTimer2::stop();              // Stop timer
   delay(100);                    // Set delay of 100ms to debounce switch
+} 
+void OLStep()
+{
+  Controller_Output = Step_Input;
+  Reference_Input = Controller_Output;
+}
+// Closed Loop Step Function with PID Controller
+void CLStep(signed long int Target_Position)
+{
+  E[0] = Target_Position - Encoder_Count;            // Calculate current error value 
+  
+  CO[0] = -C1*CO[1] - C2*CO[2] + E0*E[0] + E1*E[1] + E2*E[2];      // Calculate new Controller Output in volts           
+  Controller_Output = CO[0]*VtoPWM;                                // Convert from volts to PWM duty cycle for analogWrite function   
+
+  CO[2] = CO[1];           // save Controller Output @ t-1 as Controller Output @ t-2
+  CO[1] = CO[0];           // save Controller Output @ t as Controller Output @ t-1
+  E[2] = E[1];             // save Error @ t-1 as Error @ t-2
+  E[1] = E[0];             // save Error @ t as Error @ t-1
 } 
 
 // Timer Interrupt Service Routine trigger by MsTimer2 function
