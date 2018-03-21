@@ -65,22 +65,29 @@ float V_in = 12.0;
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // Declare Target Sequence
-volatile byte Target_Sequence[] = {1,2,3,4};
+volatile byte Target_Sequence[] = {1,2,3,4,3,2,1,4,3,2};
+// {1,2,3,4}
 
 // Declare number of targets in Target Sequence
-volatile byte TS_Length = 4;
+volatile byte TS_Length = 10;
 
-// Declare PID Gains 
-static float Kp = 0;                // Set Proportioanl Gain     
+// Declare PID Gains
+// old Kp (lab 2): 0.0635
+static float Kp = 0.0635;                // Set Proportioanl Gain     
 static float Ki = 0;                // Set Integral Gain
-static float Kd = 0;                // Set Derivative Gain
-static float N = 0; 
+
+// old Kd (lab 2): 0.00365
+static float Kd = 0.00365;                // Set Derivative Gain
+
+// old N (lab 2): 958.1013
+static float N = 958.1013; // TODO
 
 // Set Input Filter Function Gain (I(s)) 
-float I_Gain = 0;
+float I_Gain = 651.9; //
 
 // Control Loop Period in milli seconds 
-static unsigned int Period = 0;
+// old Period (lab 2): 0.0131
+static unsigned int Period = 0.0131; // TODO
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
@@ -315,8 +322,10 @@ void loop()
   // User Defined Setup Code
   //////////////////////////////////////////////////////////////////////////////////////
   
-  
-
+  // Send out initial settings
+  Serial.println(Freq);                 // Send Freq value out serially
+  Serial.println(Time);                 // Send Time value out serially
+  Serial.println(I_Gain);               // Send I_Gain value out serially
   
   //////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////
@@ -351,9 +360,39 @@ void loop()
     //////////////////////////////////////////////////////////////////////////////////////
     // User Defined Loop Code
     //////////////////////////////////////////////////////////////////////////////////////
-
-
-
+    // actually have to move here... 
+    // SEARCH FUNCTION
+    while (Received == 0){
+       // If E-Stop has been pressed, break from loop
+      if((Stop) || (Stop_bit)) {
+          break;
+      }
+      OLStep();
+      Move_Motor(Controller_Output);
+    }
+    
+    Stop_Motor(); 
+    
+    // CONTROL
+    if ( Received ==1) {
+      volatile long signed int Value = Received_Position+8;
+      
+      while (DONE != 1){
+        //Timer_Go == 1
+        
+        while (Timer_Go == 1 ) {
+          // If E-Stop has been pressed, break from loop
+          if((Stop) || (Stop_bit)) {
+            break;
+          }
+          Encoder_Count = Read_Encoder();
+          //add the 8 if it reads position but does not set done flag
+          CLStep(Value);  
+          Move_Motor(Controller_Output);
+          Timer_Go = 0;
+        }
+      }
+    }
     //////////////////////////////////////////////////////////////////////////////////////   
     //////////////////////////////////////////////////////////////////////////////////////     
         
@@ -361,7 +400,7 @@ void loop()
     DONE = 0;                   // Reset DONE flag
         
     Serial.print("Target ");
-    Serial.print(i); 
+    Serial.print(i);
     Serial.println(" completed!"); 
     
     Turn_Off_Emitters();        // Turn off Emitters of all Optical Sensors
