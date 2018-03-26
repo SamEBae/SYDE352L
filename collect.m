@@ -46,15 +46,16 @@ Y = Y/I_Gain;
 %xlabel('Time (seconds)');
 
 
-figure;
-plot(T,Y)
-grid on
-title('Output vs. Time');
-ylabel('Angular Position (radians)');
-xlabel('Time (seconds)');
-disp('Plotting complete.')
+% figure;
+% plot(T,Y)
+% grid on
+% title('Output vs. Time');
+% ylabel('Angular Position (radians)');
+% xlabel('Time (seconds)');
+% disp('Plotting complete.')
 
-%{
+%%
+
 % custom code starts here
 
 my_freq = Freq;
@@ -64,10 +65,10 @@ data_vector = Y;
 [data_vector_dot, time_vector_dot] = differ(data_vector, time_vector, my_freq)
 [data_vector_dot_dot, time_vector_dot_dot] = differ(data_vector_dot, time_vector, my_freq)
 
-figure;
-plot(time_vector_dot,data_vector_dot)
-grid on
-title('Output vs. Time');
-ylabel('Angular velocity (radians)');
-xlabel('Time (seconds)');
-%}
+%%
+% figure;
+% plot(time_vector_dot,data_vector_dot)
+% grid on
+% title('Output vs. Time');
+% ylabel('Angular velocity (radians)');
+% xlabel('Time (seconds)');

@@ -20,8 +20,8 @@ t_r 	 = 1.8/w_n;
      
     % controller stuff
     % TODO: change me
-    Kp = 0.02705958566;
-    Kd_PD1 = 0.0027274;
+    Kp = 0.03641137847;
+    Kd_PD1 = 0.0033427;
     
     Cs_PD1 = Kp+Kd_PD1*s;
     I_s = 651.9;

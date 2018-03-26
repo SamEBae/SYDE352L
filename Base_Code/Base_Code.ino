@@ -151,13 +151,13 @@ static float Freq_Final = 0;
 static float PWM_Amp = 0;
 
 // Declare PID Gains 
-static float Kp = 0.37034; // TODO                     
-static float Ki = 0.1;                // TODO
-static float Kd = 0.0157;       // TODO         
-static float N = 200; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
+static float Kp = 0.04334372377; // TODO                     
+static float Ki = 0;                // TODO
+static float Kd = 0.0031818;       // TODO         
+static float N = 990.9626; // TODO: check this, 160 from bandwidth calc but 1000 if derivative term              
 
 // Declare Desired Input Value (radians)
-float Reference_Input = pi/12;           
+float Reference_Input = pi;           
 
 // Declare Input Filter Function I(s) (assumed to be a gain)
 float I_Gain = 651.8784;
@@ -166,10 +166,10 @@ float I_Gain = 651.8784;
 float V_in = 12;
 
 // Declare Capture/Control Loop Period in milli seconds (2-1000)
-static unsigned int Period = 3;
+static unsigned int Period = 15.9;
 
 // Declare Test Duration in seconds
-static float Time = 15; // May change
+static float Time = 12.7; // May change
 
 //////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////
